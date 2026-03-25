@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="welcome">KhionesBeauty</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/895afe9ce2.js" crossorigin="anonymous"></script>    <script>      localStorage.setItem('language', 'el');\n    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><a href="/el">Cosmetics Shop</a></div>
+            <ul class="nav-menu">
+                <li><a href="/el" data-translate="home">Αρχική</a></li>
+                <li><a href="/el/products" data-translate="products">Κατάστημα</a></li>
+<li><a href="/el/wishlist" id="wishlist-btn"><span class="wishlist-icon-wrapper"><i class="fa-solid fa-heart"></i><span id="wishlist-count">0</span></span></a></li>
+<li><a href="/el/cart" data-translate="cart"><span class="cart-icon-wrapper"><i class="fas fa-shopping-bag"></i><span id="cart-count">0</span></span></a></li>
+                <li><a href="#" id="account-btn"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                <li>
+                    <div class="language-selector">
+                        <a href="#" class="language-btn"><i class="fa-solid fa-globe"></i> <span id="current-lang">EL</span></a>
+                        <ul class="language-dropdown">
+                            <li><a href="#" onclick="switchLanguage('en')">EN</a></li>
+                            <li><a href="#" onclick="switchLanguage('el')">EL</a></li>
+                        </ul>
+                    </div>
+                </li>
+                            <option value="el">EL</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container success-page">
+            <div class="success-message">
+                <div class="success-icon">✓</div>
+                <h1 data-translate="success">Success</h1>
+                <p data-translate="order_confirmed">Your order has been confirmed!</p>
+                <div class="order-info">
+                    <p><strong data-translate="order_number">Order Number:</strong> <span id="order-id">-</span></p>
+                    <p data-translate="thank_you">Thank you for your purchase!</p>
+                </div>
+                <div class="button-group">
+                    <a href="/track-order" class="btn btn-primary" data-translate="track_order">Track Order</a>
+                    <a href="/" class="btn btn-secondary" data-translate="back_home">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-text">
+                <h2 data-translate="subscribe_newsletter">Εγγραφή στο Newsletter</h2>
+                <p class="newsletter-subtitle" data-translate="get_email_updates">Λάβετε ενημερώσεις μέσω email για τα νέα μας και τις ειδικές προσφορές.</p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Εισάγετε το email σας" data-translate="newsletter_placeholder" required>
+                <button type="submit" class="btn btn-primary" data-translate="subscribe">Εγγραφή</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/images/logo.png" alt="khiones beauty" class="logo-img">
+                </div>
+                <div class="footer-sections">
+                    <div class="footer-section">
+                        <h4><a href="/el/about" data-translate="about">Σχετικά</a></h4>
+                        <a href="/about#shipping" data-translate="shipping_info" style="color: grey;" class="footer-link">Delivery Information</a>
+                        <a href="/about#privacy" data-translate="privacy" style="color: grey;" class="footer-link">Privacy Policy</a>
+                        <a href="/about#terms" data-translate="terms" style="color: grey;" class="footer-link">Terms & Conditions</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="my_account">Ο Λογαριασμός μου</h4>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="log_in">Σύνδεση</a>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="sign_in">Εγγραφή</a>
+                        <a href="/el/cart" style="color: grey;" class="footer-link" data-translate="view_cart">Δείτε το Καλάθι</a>
+                        <a href="/el/wishlist" style="color: grey;" class="footer-link" data-translate="my_wishlist">Η Λίστα Επιθυμιών μου</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4><a href="/el/contact" data-translate="contact_us" style="color: inherit;"><strong>Επικοινωνήστε μαζί μας</strong></a></h4>
+                        <p style="margin-top: 0; color: grey;" class="footer-link"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@khionesbeauty.com" target="_blank" style="color: grey;"><i class="fa-regular fa-envelope"></i><span> </span>info@khionesbeauty.com</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="tel:+302101234567" style="color: grey;"><i class="fa-solid fa-phone"></i> +30 210 123 4567</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="https://www.google.com/maps/search/?api=1&query=Athens+Greece" target="_blank" style="color: grey;"><i class="fa-solid fa-location-dot"></i> Athens, Greece</a></p>
+                        <p><a href="/el/contact#complaint-form" style="color: grey;" class="footer-link"><i class="fa-regular fa-file-lines"></i> Φόρμα Παραπόνων</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="follow_us">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 khiones beauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/success.js"></script>
+</body>
+</html>
+
+

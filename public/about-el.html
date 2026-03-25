@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="welcome">KhionesBeauty</title>
+    <meta property="og:title" content="About Us - khiones beauty">
+    <meta property="og:description" content="Learn more about khiones beauty - your premier destination for Korean cosmetics">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta name="description" content="Learn more about khiones beauty - your premier destination for Korean cosmetics">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/895afe9ce2.js" crossorigin="anonymous"></script>\n    <script>\n      localStorage.setItem('language', 'el');\n    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/"><img src="/images/logo.png" alt="khiones beauty" class="logo-img"></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/el" data-translate="home">Αρχική</a></li>
+                <li><a href="/el/products" data-translate="products">Κατάστημα</a></li>
+                <li><a href="/el/wishlist" id="wishlist-btn"><span class="wishlist-icon-wrapper"><i class="fa-solid fa-heart"></i><span id="wishlist-count">0</span></span></a></li>
+                <li><a href="/el/cart" data-translate="cart"><span class="cart-icon-wrapper"><i class="fas fa-shopping-bag"></i><span id="cart-count">0</span></span></a></li>
+                <li><a href="#" id="account-btn"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                <li>
+                    <div class="language-selector">
+                        <a href="#" class="language-btn"><i class="fa-solid fa-globe"></i> <span id="current-lang">EL</span></a>
+                        <ul class="language-dropdown">
+                            <li><a href="#" onclick="switchLanguage('en')">EN</a></li>
+                            <li><a href="#" onclick="switchLanguage('el')">EL</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container about-page">
+            <h1>About Us</h1>
+            
+            <div class="about-content">
+                <section class="about-hero">
+                    <h2><i class="fa-solid fa-spa"></i> Welcome to khiones beauty</h2>
+                    <p>Your premier destination for authentic Korean cosmetics and skincare products. We are passionate about bringing the best of Korean beauty to Greece and Europe.</p>
+                </section>
+
+                <section class="about-story">
+                    <h3><i class="fa-solid fa-book"></i> Our Story</h3>
+                    <p>khiones beauty was founded with a mission to provide access to high-quality Korean skincare and cosmetics. We carefully curate our selection to bring you the latest trends and timeless classics from Korea's most trusted brands.</p>
+                    <p>Our team is dedicated to helping you achieve your skincare goals with products that combine advanced technology with natural ingredients.</p>
+                </section>
+
+                <section class="about-values">
+                    <h3><i class="fa-solid fa-heart"></i> Our Values</h3>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <i class="fa-solid fa-leaf"></i>
+                            <h4>Authenticity</h4>
+                            <p>We only sell genuine products directly from authorized distributors.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fa-solid fa-heart"></i>
+                            <h4>Customer Care</h4>
+                            <p>Your satisfaction is our top priority. We're here to help!</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fa-solid fa-truck"></i>
+                            <h4>Fast Shipping</h4>
+                            <p>Quick and reliable delivery to your doorstep.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fa-solid fa-star"></i>
+                            <h4>Quality</h4>
+                            <p>We handpick only the best products for your skincare routine.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-shipping" id="shipping">
+                    <h3><i class="fa-solid fa-truck"></i> Shipping Information <button class="shipping-toggle" onclick="toggleShipping()"><i class="fa-solid fa-angle-down"></i></button></h3>
+                    <div class="shipping-info" id="shipping-info" style="display: none;">
+                        <div class="shipping-item">
+                            <h4>Standard Shipping</h4>
+                            <p>Delivery within 3-5 business days. Free for orders over €50.</p>
+                        </div>
+                        <div class="shipping-item">
+                            <h4>Express Shipping</h4>
+                            <p>Delivery within 1-2 business days. Additional fee applies.</p>
+                        </div>
+                        <div class="shipping-item">
+                            <h4>International Shipping</h4>
+                            <p>Available to select European countries. Delivery within 7-14 business days.</p>
+                        </div>
+                        <div class="shipping-item">
+                            <h4>Free Shipping</h4>
+                            <p>Enjoy free standard shipping on all orders over €50 within Greece.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-privacy" id="privacy">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Privacy Policy <button class="shipping-toggle" onclick="togglePrivacy()"><i class="fa-solid fa-angle-down"></i></button></h3>
+                    <div class="privacy-info" id="privacy-info" style="display: none;">
+                        <div class="privacy-item">
+                            <h4>Information We Collect</h4>
+                            <p>We collect personal information such as name, email address, phone number, and shipping address when you place an order.</p>
+                        </div>
+                        <div class="privacy-item">
+                            <h4>How We Use Your Information</h4>
+                            <p>Your information is used to process orders, communicate with you about your purchases, and improve our services.</p>
+                        </div>
+                        <div class="privacy-item">
+                            <h4>Data Protection</h4>
+                            <p>We implement security measures to protect your personal information against unauthorized access.</p>
+                        </div>
+                        <div class="privacy-item">
+                            <h4>Your Rights</h4>
+                            <p>You have the right to access, correct, or delete your personal information. Contact us for any privacy-related requests.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-terms" id="terms">
+                    <h3><i class="fa-solid fa-file-contract"></i> Terms & Conditions <button class="shipping-toggle" onclick="toggleTerms()"><i class="fa-solid fa-angle-down"></i></button></h3>
+                    <div class="terms-info" id="terms-info" style="display: none;">
+                        <div class="terms-item">
+                            <h4>Acceptance of Terms</h4>
+                            <p>By accessing and using our website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                        </div>
+                        <div class="terms-item">
+                            <h4>Product Information</h4>
+                            <p>We strive to provide accurate product descriptions and pricing. However, we reserve the right to correct any errors.</p>
+                        </div>
+                        <div class="terms-item">
+                            <h4>Order Policy</h4>
+                            <p>All orders are subject to availability. We reserve the right to refuse or cancel any order.</p>
+                        </div>
+                        <div class="terms-item">
+                            <h4>Returns & Refunds</h4>
+                            <p>Please refer to our return policy for information on returns and refunds.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-text">
+                <h2 data-translate="subscribe_newsletter">Εγγραφή στο Newsletter</h2>
+                <p class="newsletter-subtitle" data-translate="get_email_updates">Λάβετε ενημερώσεις μέσω email για τα νέα μας και τις ειδικές προσφορές.</p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Εισάγετε το email σας" data-translate="newsletter_placeholder" required>
+                <button type="submit" class="btn btn-primary" data-translate="subscribe">Εγγραφή</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/images/logo.png" alt="khiones beauty" class="logo-img">
+                </div>
+                <div class="footer-sections">
+                    <div class="footer-section">
+                        <h4><a href="/el/about" data-translate="about">Σχετικά</a></h4>
+                        <a href="/about#shipping" data-translate="shipping_info" style="color: grey;" class="footer-link">Delivery Information</a>
+                        <a href="/about#privacy" data-translate="privacy" style="color: grey;" class="footer-link">Privacy Policy</a>
+                        <a href="/about#terms" data-translate="terms" style="color: grey;" class="footer-link">Terms & Conditions</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="my_account">Ο Λογαριασμός μου</h4>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="log_in">Σύνδεση</a>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="sign_in">Εγγραφή</a>
+                        <a href="/el/cart" style="color: grey;" class="footer-link" data-translate="view_cart">Δείτε το Καλάθι</a>
+                        <a href="/el/wishlist" style="color: grey;" class="footer-link" data-translate="my_wishlist">Η Λίστα Επιθυμιών μου</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4><a href="/el/contact" data-translate="contact_us" style="color: inherit;"><strong>Επικοινωνήστε μαζί μας</strong></a></h4>
+                        <p style="margin-top: 0; color: grey;" class="footer-link"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@khionesbeauty.com" target="_blank" style="color: grey;"><i class="fa-regular fa-envelope"></i><span> </span>info@khionesbeauty.com</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="tel:+302101234567" style="color: grey;"><i class="fa-solid fa-phone"></i> +30 210 123 4567</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="https://www.google.com/maps/search/?api=1&query=Athens+Greece" target="_blank" style="color: grey;"><i class="fa-solid fa-location-dot"></i> Athens, Greece</a></p>
+                        <p><a href="/el/contact#complaint-form" style="color: grey;" class="footer-link"><i class="fa-regular fa-file-lines"></i> Φόρμα Παραπόνων</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="follow_us">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 khiones beauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/hamburger.js"></script>
+    <script src="/js/admin-login.js"></script>
+    <script>
+        // Update cart count
+        async function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+        updateCartCount();
+
+        function toggleShipping() {
+            const shippingInfo = document.getElementById('shipping-info');
+            const toggleBtn = document.querySelector('.shipping-toggle i');
+            if (shippingInfo.style.display === 'none') {
+                shippingInfo.style.display = 'grid';
+                toggleBtn.className = 'fa-solid fa-angle-up';
+            } else {
+                shippingInfo.style.display = 'none';
+                toggleBtn.className = 'fa-solid fa-angle-down';
+            }
+        }
+
+        function togglePrivacy() {
+            const privacyInfo = document.getElementById('privacy-info');
+            const toggleBtn = document.querySelector('.about-privacy .shipping-toggle i');
+            if (privacyInfo.style.display === 'none') {
+                privacyInfo.style.display = 'grid';
+                toggleBtn.className = 'fa-solid fa-angle-up';
+            } else {
+                privacyInfo.style.display = 'none';
+                toggleBtn.className = 'fa-solid fa-angle-down';
+            }
+        }
+
+        function toggleTerms() {
+            const termsInfo = document.getElementById('terms-info');
+            const toggleBtn = document.querySelector('.about-terms .shipping-toggle i');
+            if (termsInfo.style.display === 'none') {
+                termsInfo.style.display = 'grid';
+                toggleBtn.className = 'fa-solid fa-angle-up';
+            } else {
+                termsInfo.style.display = 'none';
+                toggleBtn.className = 'fa-solid fa-angle-down';
+            }
+        }
+    </script>
+</body>
+</html>
+
+

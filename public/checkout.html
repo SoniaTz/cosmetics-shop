@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="welcome">KhionesBeauty</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/895afe9ce2.js" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      localStorage.setItem('language', 'en');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/"><img src="/images/logo.png" alt="khiones beauty" class="logo-img"></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" data-translate="home">Home</a></li>
+                <li><a href="/products" data-translate="products">Shop</a></li>
+                <li><a href="/wishlist" id="wishlist-btn"><span class="wishlist-icon-wrapper"><i class="fa-solid fa-heart"></i><span id="wishlist-count">0</span></span></a></li>
+                <li><a href="/cart" class="active" data-translate="cart"><span class="cart-icon-wrapper"><i class="fas fa-shopping-bag"></i><span id="cart-count">0</span></span></a></li>
+                <li><a href="#" id="account-btn"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                <li>
+                    <div class="language-selector">
+                        <a href="#" class="language-btn"><i class="fa-solid fa-globe"></i> <span id="current-lang">EN</span></a>
+                        <ul class="language-dropdown">
+                            <li><a href="#" onclick="switchLanguage('en')">EN</a></li>
+                            <li><a href="#" onclick="switchLanguage('el')">EL</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container checkout-page">
+            <h1 data-translate="checkout">Checkout</h1>
+            
+            <div class="checkout-content">
+                <section class="checkout-form">
+                    <form id="checkout-form">
+                        <fieldset>
+                            <legend data-translate="contact_info">Contact Information</legend>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="phone">Phone</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend data-translate="address">Shipping Address</legend>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label data-translate="address">Address</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="city">City</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="postal_code">Postal Code</label>
+                                    <input type="text" id="postalCode" name="postalCode" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="country">Country</label>
+                                    <input type="text" id="country" name="country" required>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend data-translate="shipping_method">Shipping Method</legend>
+                            <div id="shipping-options">
+                                <!-- Shipping methods loaded by JavaScript -->
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend data-translate="payment_method">Payment Method</legend>
+                            <div id="card-element"></div>
+                            <div id="card-errors" role="alert"></div>
+                        </fieldset>
+
+                        <button type="submit" class="btn btn-primary btn-full" data-translate="place_order">Place Order</button>
+                    </form>
+                </section>
+
+                <aside class="checkout-summary">
+                    <h3 data-translate="order_summary">Order Summary</h3>
+                    <div id="checkout-items">
+                        <!-- Items loaded by JavaScript -->
+                    </div>
+                    <div class="summary-item">
+                        <span data-translate="subtotal">Subtotal:</span>
+                        <span id="checkout-subtotal">€0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span data-translate="shipping">Shipping:</span>
+                        <span id="checkout-shipping">€0.00</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span data-translate="total">Total:</span>
+                        <span id="checkout-total">€0.00</span>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-text">
+                <h2 data-translate="subscribe_newsletter">Subscribe to Newsletter</h2>
+                <p class="newsletter-subtitle">Get E-mail updates about our latest shop and <span class="highlight">special offers</span>.</p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Enter your email" data-translate="newsletter_placeholder" required>
+                <button type="submit" class="btn btn-primary" data-translate="subscribe">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/images/logo.png" alt="khiones beauty" class="logo-img">
+                </div>
+                <div class="footer-sections">
+                    <div class="footer-section">
+                        <h4><a href="/about">About</a></h4>
+                        <a href="/about#shipping" data-translate="shipping_info" style="color: grey;" class="footer-link">Delivery Information</a>
+                        <a href="/about#privacy" data-translate="privacy" style="color: grey;" class="footer-link">Privacy Policy</a>
+                        <a href="/about#terms" data-translate="terms" style="color: grey;" class="footer-link">Terms & Conditions</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>My Account</h4>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link">Log In</a>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link">Sign In</a>
+                        <a href="/cart.html" style="color: grey;" class="footer-link">View Cart</a>
+                        <a href="#" style="color: grey;" class="footer-link">My Wishlist</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4><a href="/contact" data-translate="contact_us" style="color: inherit;"><strong>Contact Us</strong></a></h4>
+                        <p style="margin-top: 0; color: grey;" class="footer-link"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@khionesbeauty.com" target="_blank" style="color: grey;"><i class="fa-regular fa-envelope"></i><span> </span>info@khionesbeauty.com</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="tel:+302101234567" style="color: grey;"><i class="fa-solid fa-phone"></i> +30 210 123 4567</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="https://www.google.com/maps/search/?api=1&query=Athens+Greece" target="_blank" style="color: grey;"><i class="fa-solid fa-location-dot"></i> Athens, Greece</a></p>
+                        <p><a href="/contact#complaint-form" style="color: grey;" class="footer-link"><i class="fa-regular fa-file-lines"></i> Complaint Form</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="follow_us">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 khiones beauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- User Account Modal -->
+    <div id="account-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="close-account-modal">&times;</span>
+            <div id="account-login-form" style="display: block;">
+                <h2 data-translate="login">Login</h2>
+                <form id="user-login-form">
+                    <div class="form-group">
+                        <label data-translate="email">Email</label>
+                        <input type="email" id="user-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="password">Password</label>
+                        <input type="password" id="user-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" data-translate="login_button">Login</button>
+                    <p style="text-align: center; margin-top: 10px;">Don't have an account? <a href="#" id="show-register" style="color: var(--primary-color);">Register</a></p>
+                </form>
+            </div>
+            <div id="account-register-form" style="display: none;">
+                <h2>Register</h2>
+                <form id="user-register-form">
+                    <div class="form-group">
+                        <label>Nickname</label>
+                        <input type="text" id="user-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Register</button>
+                    <p style="text-align: center; margin-top: 10px;">Already have an account? <a href="#" id="show-login" style="color: var(--primary-color);">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/hamburger.js"></script>
+    <script src="/js/admin-login.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="welcome">KhionesBeauty</title>
+    <meta property="og:title" content="Contact - khiones beauty">
+    <meta property="og:description" content="Get in touch with us for any questions or complaints">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta name="description" content="Contact khiones beauty for questions and complaints">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/895afe9ce2.js" crossorigin="anonymous"></script>   <script>    localStorage.setItem('language', 'el');\n    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/"><img src="/images/logo.png" alt="khiones beauty" class="logo-img"></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/el" data-translate="home">Αρχική</a></li>
+                <li><a href="/el/products" data-translate="products">Κατάστημα</a></li>
+                <li><a href="/el/wishlist" data-translate="cart" id="wishlist-btn"><span class="wishlist-icon-wrapper"><i class="fa-solid fa-heart"></i><span id="wishlist-count">0</span></span></a></li>
+                <li><a href="/el/cart" data-translate="cart"><span class="cart-icon-wrapper"><i class="fas fa-shopping-bag"></i><span id="cart-count">0</span></span></a></li>
+                <li><a href="#" id="account-btn"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                <li>
+                    <div class="language-selector">
+                        <a href="#" class="language-btn"><i class="fa-solid fa-globe"></i> <span id="current-lang">EL</span></a>
+                        <ul class="language-dropdown">
+                            <li><a href="#" onclick="switchLanguage('en')">EN</a></li>
+                            <li><a href="#" onclick="switchLanguage('el')">EL</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container contact-page">
+            <h1 data-translate="contact">Contact</h1>
+            
+            <div class="contact-content">
+                <section class="contact-info">
+                    <div class="contact-card">
+                        <i class="fa-solid fa-map-marker-alt"></i>
+                        <h3 data-translate="our_location">Our Location</h3>
+                        <p>123 Beauty Street</p>
+                        <p>Athens, Greece 10561</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <h3 data-translate="phone">Phone</h3>
+                        <p>+30 210 123 4567</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h3 data-translate="email">Email</h3>
+                        <p>info@khionesbeauty.com</p>
+                    </div>
+                </section>
+
+                <section class="contact-map">
+                    <h2 data-translate="find_us">Find Us</h2>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615674389!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee8ef7d0d9!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1630000000000!5m2!1sen!2sfr"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </section>
+
+                <section class="complaint-form" id="complaint-form">
+                    <h2 data-translate="complaint_form">Complaint Form</h2>
+                    <p data-translate="complaint_description">Please fill out the form below for any complaints or concerns.</p>
+                    <form id="complaint-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="name">Name</label>
+                                <input type="text" id="complaint-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="email">Email</label>
+                                <input type="email" id="complaint-email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-translate="phone">Phone</label>
+                            <input type="tel" id="complaint-phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-translate="order_number">Order Number (Optional)</label>
+                            <input type="text" id="complaint-order">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-translate="subject">Subject</label>
+                            <select id="complaint-subject" required>
+                                <option value="" data-translate="select_subject">Select Subject</option>
+                                <option value="product" data-translate="product_issue">Product Issue</option>
+                                <option value="delivery" data-translate="delivery_issue">Delivery Issue</option>
+                                <option value="refund" data-translate="refund_request">Refund Request</option>
+                                <option value="other" data-translate="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-translate="message">Message</label>
+                            <textarea id="complaint-message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" data-translate="submit_complaint">Submit Complaint</button>
+                    </form>
+                    <div id="complaint-message-display"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-text">
+                <h2 data-translate="subscribe_newsletter">Εγγραφή στο Newsletter</h2>
+                <p class="newsletter-subtitle" data-translate="get_email_updates">Λάβετε ενημερώσεις μέσω email για τα νέα μας και τις ειδικές προσφορές.</p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Εισάγετε το email σας" data-translate="newsletter_placeholder" required>
+                <button type="submit" class="btn btn-primary" data-translate="subscribe">Εγγραφή</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/images/logo.png" alt="khiones beauty" class="logo-img">
+                </div>
+                <div class="footer-sections">
+                    <div class="footer-section">
+                        <h4><a href="/el/about" data-translate="about">Σχετικά</a></h4>
+                        <a href="/about#shipping" data-translate="shipping_info" style="color: grey;" class="footer-link">Delivery Information</a>
+                        <a href="/about#privacy" data-translate="privacy" style="color: grey;" class="footer-link">Privacy Policy</a>
+                        <a href="/about#terms" data-translate="terms" style="color: grey;" class="footer-link">Terms & Conditions</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="my_account">Ο Λογαριασμός μου</h4>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="log_in">Σύνδεση</a>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="sign_in">Εγγραφή</a>
+                        <a href="/el/cart" style="color: grey;" class="footer-link" data-translate="view_cart">Δείτε το Καλάθι</a>
+                        <a href="/el/wishlist" style="color: grey;" class="footer-link" data-translate="my_wishlist">Η Λίστα Επιθυμιών μου</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4><a href="/el/contact" data-translate="contact" style="color: inherit;"><strong>Επικοινωνία</strong></a></h4>
+                        <p style="margin-top: 0; color: grey;" class="footer-link"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@khionesbeauty.com" target="_blank" style="color: grey;"><i class="fa-regular fa-envelope"></i><span> </span>info@khionesbeauty.com</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="tel:+302101234567" style="color: grey;"><i class="fa-solid fa-phone"></i> +30 210 123 4567</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="https://www.google.com/maps/search/?api=1&query=Athens+Greece" target="_blank" style="color: grey;"><i class="fa-solid fa-location-dot"></i> Athens, Greece</a></p>
+                        <p><a href="/el/contact#complaint-form" style="color: grey;" class="footer-link"><i class="fa-regular fa-file-lines"></i> Φόρμα Παραπόνων</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="follow_us">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 khiones beauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- User Account Modal -->
+    <div id="account-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="close-account-modal">&times;</span>
+            <div id="account-login-form" style="display: block;">
+                <h2 data-translate="login">Login</h2>
+                <form id="user-login-form">
+                    <div class="form-group">
+                        <label data-translate="email">Email</label>
+                        <input type="email" id="user-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="password">Password</label>
+                        <input type="password" id="user-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" data-translate="login_button">Login</button>
+                    <p style="text-align: center; margin-top: 10px;">Don't have an account? <a href="#" id="show-register" style="color: var(--primary-color);">Register</a></p>
+                </form>
+            </div>
+            <div id="account-register-form" style="display: none;">
+                <h2>Register</h2>
+                <form id="user-register-form">
+                    <div class="form-group">
+                        <label>Nickname</label>
+                        <input type="text" id="user-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Register</button>
+                    <p style="text-align: center; margin-top: 10px;">Already have an account? <a href="#" id="show-login" style="color: var(--primary-color);">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/hamburger.js"></script>
+    <script src="/js/admin-login.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/cart.js"></script>
+    <script>
+        // Complaint form handling
+        document.getElementById('complaint-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const complaintData = {
+                name: document.getElementById('complaint-name').value,
+                email: document.getElementById('complaint-email').value,
+                phone: document.getElementById('complaint-phone').value,
+                orderNumber: document.getElementById('complaint-order').value,
+                subject: document.getElementById('complaint-subject').value,
+                message: document.getElementById('complaint-message').value,
+                date: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch('/api/complaints', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(complaintData)
+                });
+
+                if (response.ok) {
+                    document.getElementById('complaint-message-display').innerHTML = 
+                        '<p style="color: green; margin-top: 10px;">Your complaint has been submitted successfully!</p>';
+                    document.getElementById('complaint-form').reset();
+                } else {
+                    throw new Error('Failed to submit complaint');
+                }
+            } catch (error) {
+                document.getElementById('complaint-message-display').innerHTML = 
+                    '<p style="color: red; margin-top: 10px;">Error submitting complaint. Please try again.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

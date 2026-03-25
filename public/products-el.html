@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="welcome">KhionesBeauty</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/895afe9ce2.js" crossorigin="anonymous"></script>
+    <script>
+        localStorage.setItem('language', 'el');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/"><img src="/images/logo.png" alt="khiones beauty" class="logo-img"></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/el" data-translate="home">Αρχική</a></li>
+                <li><a href="/el/products" class="active" data-translate="products">Κατάστημα</a></li>
+                <li><a href="/el/wishlist" id="wishlist-btn"><span class="wishlist-icon-wrapper"><i class="fa-solid fa-heart"></i><span id="wishlist-count">0</span></span></a></li>
+                <li><a href="/el/cart" data-translate="cart"><span class="cart-icon-wrapper"><i class="fas fa-shopping-bag"></i><span id="cart-count">0</span></span></a></li>
+                <li><a href="#" id="account-btn"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                <li>
+                    <div class="language-selector">
+                        <a href="#" class="language-btn"><i class="fa-solid fa-globe"></i> <span id="current-lang">EL</span></a>
+                        <ul class="language-dropdown">
+                            <li><a href="#" onclick="switchLanguage('en')">EN</a></li>
+                            <li><a href="#" onclick="switchLanguage('el')">EL</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container products-page">
+            <button class="filter-icon-btn" id="filter-toggle" style="margin-left: 1095px; margin-top: 0px; margin-right: 65px;" onclick="toggleFilterPopup()">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+            
+            <div id="filter-popup" style="display: none; position: absolute; background: white; border: 1px solid rgb(221, 221, 221); padding: 15px; z-index: 1000; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; margin-left: 1240px; margin-top: 158px; width: 8.5%; height: 12.5%;">
+                <select id="brand-filter" style="padding: 5px; width: 100px;">
+                    <option value="">Όλες οι Μάρκες</option>
+                </select>
+                <select id="category-filter" style="padding: 5px; width: 100px; margin-top: 5px;">
+                    <option value="">Όλες οι Κατηγορίες</option>
+                    <option value="Skincare">Skincare</option>
+                    <option value="Makeup">Makeup</option>
+                    <option value="Haircare">Haircare</option>
+                    <option value="Fragrance">Fragrance</option>
+                    <option value="Bath & Body">Bath & Body</option>
+                </select>
+            </div>
+            <div class="search-box-wrapper" style="position: relative; display: inline-block; vertical-align: middle; margin-right: 100px; margin-left: 970px; margin-top: -77px;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 19%; transform: translateY(-50%); color: #A66EC2;"></i>
+                <input type="text" id="search-input-top" placeholder="Αναζήτηση" class="search-box-top" style="width: 150px; padding-left: 30px; height: 30px; outline: none !important; border: 1px solid white;" onclick="closeAllPopups()">
+                <div id="search-autocomplete" style="display: none; position: absolute; background: white; border: 1px solid #ddd; max-height: 200px; overflow-y: auto; width: 250px; z-index: 1000; margin-top: 5px; margin-left: 30px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+            <i class="fa-solid fa-arrow-down-short-wide" style="margin-left: 1080px; color: #A66EC2; vertical-align: middle; position: relative; top: -103px; cursor: pointer;" onclick="toggleSortOptions()"></i>
+            <div id="sort-popup" class="sort-popup" style="display: none; position: absolute; background: white; border: 1px solid #ddd; padding: 15px; z-index: 1000; margin-left: 1000px; margin-top: 30px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <select id="sort-filter" onchange="applySort()" style="padding: 5px; width: 150px;">
+                    <option value="">Προεπιλογή</option>
+                    <option value="price-asc">Τιμή: Χαμηλή προς Υψηλή</option>
+                    <option value="price-desc">Τιμή: Υψηλή προς Χαμηλή</option>
+                    <option value="newest">Νεότερα</option>
+                </select>
+            </div>
+
+            <section class="products-section">
+                <div class="products-grid" id="products-grid">
+                    <!-- Products loaded by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-text">
+                <h2 data-translate="subscribe_newsletter">Εγγραφή στο Newsletter</h2>
+                <p class="newsletter-subtitle" data-translate="get_email_updates">Λάβετε ενημερώσεις μέσω email για τα νέα μας και τις ειδικές προσφορές.</p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Εισάγετε το email σας" data-translate="newsletter_placeholder" required>
+                <button type="submit" class="btn btn-primary" data-translate="subscribe">Εγγραφή</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/images/logo.png" alt="khiones beauty" class="logo-img">
+                </div>
+                <div class="footer-sections">
+                    <div class="footer-section">
+                        <h4><a href="/about" data-translate="about">Σχετικά</a></h4>
+                        <a href="/el/about#shipping" data-translate="shipping_info" style="color: grey;" class="footer-link">Πληροφορίες Αποστολής</a>
+                        <a href="/el/about#privacy" data-translate="privacy" style="color: grey;" class="footer-link">Πολιτική Απορρήτου</a>
+                        <a href="/el/about#terms" data-translate="terms" style="color: grey;" class="footer-link">Όροι και Προϋποθέσεις</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="my_account">Ο Λογαριασμός μου</h4>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="log_in">Σύνδεση</a>
+                        <a href="/admin-login.html" style="color: grey;" class="footer-link" data-translate="sign_in">Εγγραφή</a>
+                        <a href="/cart.html" style="color: grey;" class="footer-link" data-translate="view_cart">Δείτε το Καλάθι</a>
+                        <a href="/el/wishlist" style="color: grey;" class="footer-link" data-translate="my_wishlist">Η Λίστα Επιθυμιών μου</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4><a href="/el/contact" data-translate="contact_us" style="color: inherit;"><strong>Επικοινωνήστε μαζί μας</strong></a></h4>
+                        <p style="margin-top: 0; color: grey;" class="footer-link"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@khionesbeauty.com" target="_blank" style="color: grey;"><i class="fa-regular fa-envelope"></i><span> </span>info@khionesbeauty.com</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="tel:+302101234567" style="color: grey;"><i class="fa-solid fa-phone"></i> +30 210 123 4567</a></p>
+                        <p style="color: grey;" class="footer-link"><a href="https://www.google.com/maps/search/?api=1&query=Athens+Greece" target="_blank" style="color: grey;"><i class="fa-solid fa-location-dot"></i> Athens, Greece</a></p>
+                        <p><a href="/el/contact#complaint-form" style="color: grey;" class="footer-link"><i class="fa-regular fa-file-lines"></i> Φόρμα Παραπόνων</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-translate="follow_us">Ακολουθήστε μας</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 khiones beauty. Με επιφύλαξη παντός δικαιώματος.</p>
+        </div>
+    </footer>
+
+    <!-- User Account Modal -->
+    <div id="account-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="close-account-modal">&times;</span>
+            <div id="account-login-form" style="display: block;">
+                <h2 data-translate="login">Σύνδεση</h2>
+                <form id="user-login-form">
+                    <div class="form-group">
+                        <label data-translate="email">Email</label>
+                        <input type="email" id="user-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="password">Κωδικός</label>
+                        <input type="password" id="user-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" data-translate="login_button">Σύνδεση</button>
+                    <p style="text-align: center; margin-top: 10px;" data-translate="dont_have_account">Δεν έχετε λογαριασμό; <a href="#" id="show-register" style="color: var(--primary-color);">Εγγραφή</a></p>
+                </form>
+            </div>
+            <div id="account-register-form" style="display: none;">
+                <h2 data-translate="register">Εγγραφή</h2>
+                <form id="user-register-form">
+                    <div class="form-group">
+                        <label data-translate="nickname">Ψευδώνυμο</label>
+                        <input type="text" id="user-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="password">Κωδικός</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Εγγραφή</button>
+                    <p style="text-align: center; margin-top: 10px;" data-translate="already_have_account">Έχετε ήδη λογαριασμό; <a href="#" id="show-login" style="color: var(--primary-color);">Σύνδεση</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/hamburger.js"></script>
+    <script src="/js/admin-login.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/products.js"></script>
+</body>
+</html>
+
+

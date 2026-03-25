@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="admin">Admin Panel</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/895afe9ce2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <img src="/images/logo.png" alt="khiones beauty" class="logo-img">
+            <ul class="nav-menu">
+                <li><a href="/" data-translate="home">Home</a></li>
+                <li><a id="logout-btn" href="#" data-translate="logout">Logout</a></li>
+                <li>
+                    <select id="language-select" class="language-select">
+                        <option value="en" data-translate="english">English</option>
+                        <option value="el" data-translate="greek">Greek</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div id="login-section" class="container admin-login">
+            <div class="login-box">
+                <h2 data-translate="login">Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label data-translate="username">Username</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" data-translate="login_button">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="admin-section" class="container admin-page" style="display: none;">
+            <div class="admin-sidebar">
+                <ul class="admin-menu">
+                    <li><a href="#products" data-translate="manage_products">Manage Products</a></li>
+                    <li><a href="#reviews" data-translate="manage_reviews">Manage Reviews</a></li>
+                    <li><a href="#coupons" data-translate="manage_coupons">Manage Coupons</a></li>
+                    <li><a href="#shipping" data-translate="manage_shipping">Manage Shipping</a></li>
+                    <li><a href="#orders" data-translate="view_orders">View Orders</a></li>
+                    <li><a href="#complaints" data-translate="complaints">Complaints</a></li>
+                    <li><a href="#subscribers" data-translate="subscribers">Subscribers</a></li>
+                </ul>
+            </div>
+
+            <div class="admin-content">
+                <!-- Products Section -->
+                <section id="products" class="admin-section">
+                    <h2 data-translate="manage_products">Manage Products</h2>
+                    <div class="button-group">
+                        <button id="add-product-btn" class="btn btn-primary" data-translate="add_product">Add Product</button>
+                        <button id="generate-products-btn" class="btn btn-secondary" data-translate="generate_products">Generate Sample Products</button>
+                    </div>
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th data-translate="product_name">Product Name</th>
+                                <th data-translate="price">Price</th>
+                                <th data-translate="featured">Featured</th>
+                                <th>New Arrival</th>
+                                <th data-translate="stock">Stock</th>
+                                <th data-translate="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Reviews Section (shown by default for testing) -->
+                <section id="reviews" class="admin-section">
+                    <h2 data-translate="manage_reviews">Manage Reviews</h2>
+                    <table id="reviews-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th data-translate="product_name">Product</th>
+                                <th data-translate="user">User</th>
+                                <th data-translate="rating">Rating</th>
+                                <th data-translate="comment">Comment</th>
+                                <th data-translate="date">Date</th>
+                                <th data-translate="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Add/Edit Product Form -->
+                <div id="product-form-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3 id="product-form-title" data-translate="add_product">Add Product</h3>
+                        <form id="product-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="product_name_en">Product Name (English)</label>
+                                    <input type="text" id="name_en" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="product_name_el">Product Name (Greek)</label>
+                                    <input type="text" id="name_el" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Short Description (English)</label>
+                                    <input type="text" id="short_description_en">
+                                </div>
+                                <div class="form-group">
+                                    <label>Short Description (Greek)</label>
+                                    <input type="text" id="short_description_el">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="product_description_en">Description (English)</label>
+                                    <textarea id="description_en" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="product_description_el">Description (Greek)</label>
+                                    <textarea id="description_el" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="brand">Brand</label>
+                                    <input type="text" id="brand">
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="category">Category</label>
+                                    <select id="category">
+                                        <option value="Skincare">Skincare</option>
+                                        <option value="Makeup">Makeup</option>
+                                        <option value="Haircare">Haircare</option>
+                                        <option value="Fragrance">Fragrance</option>
+                                        <option value="Bath & Body">Bath & Body</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="price">Price</label>
+                                    <input type="number" id="price" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="stock">Stock</label>
+                                    <input type="number" id="stock" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="featured"> 
+                                    Featured Product
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="new_arrival"> 
+                                    New Arrival
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ingredients (English)</label>
+                                <textarea id="ingredients_en" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ingredients (Greek)</label>
+                                <textarea id="ingredients_el" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label data-translate="skin_type">Skin Type</label>
+                                <select id="skin_type">
+                                    <option value="All" data-translate="all">All</option>
+                                    <option value="Oily" data-translate="skin_type_oily">Oily</option>
+                                    <option value="Dry" data-translate="skin_type_dry">Dry</option>
+                                    <option value="Combination" data-translate="skin_type_combination">Combination</option>
+                                    <option value="Sensitive" data-translate="skin_type_sensitive">Sensitive</option>
+                                    <option value="Normal" data-translate="skin_type_normal">Normal</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Product Image</label>
+                                <input type="file" id="image" accept="image/*">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Additional Images</label>
+                                <input type="file" id="additional-images" accept="image/*" multiple>
+                                <div id="additional-images-preview" class="image-preview-grid"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" data-translate="save">Save</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Coupons Section -->
+                <section id="coupons" class="admin-section" style="display: none;">
+                    <h2 data-translate="manage_coupons">Manage Coupons</h2>
+                    <button id="add-coupon-btn" class="btn btn-primary" data-translate="add_product">Add Coupon</button>
+                    <table id="coupons-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th data-translate="discount_type">Type</th>
+                                <th data-translate="discount_value">Value</th>
+                                <th data-translate="expiration_date">Expiration</th>
+                                <th data-translate="max_uses">Max Uses</th>
+                                <th data-translate="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Add Coupon Form -->
+                <div id="coupon-form-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3 data-translate="add_product">Add Coupon</h3>
+                        <form id="coupon-form">
+                            <div class="form-group">
+                                <label>Code</label>
+                                <input type="text" id="coupon-code" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="discount_type">Type</label>
+                                    <select id="coupon-type">
+                                        <option value="percentage" data-translate="percentage">Percentage</option>
+                                        <option value="fixed_amount" data-translate="fixed_amount">Fixed Amount</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="discount_value">Value</label>
+                                    <input type="number" id="coupon-value" step="0.01" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="expiration_date">Expiration Date</label>
+                                    <input type="date" id="coupon-expiration">
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="max_uses">Max Uses</label>
+                                    <input type="number" id="coupon-max-uses">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-translate="save">Save</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Shipping Section -->
+                <section id="shipping" class="admin-section" style="display: none;">
+                    <h2 data-translate="manage_shipping">Manage Shipping</h2>
+                    <button id="add-shipping-btn" class="btn btn-primary" data-translate="add_product">Add Shipping Method</button>
+                    <table id="shipping-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="shipping_method_name">Name</th>
+                                <th data-translate="shipping_price">Price</th>
+                                <th data-translate="estimated_days">Estimated Days</th>
+                                <th data-translate="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Add Shipping Form -->
+                <div id="shipping-form-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3 data-translate="add_product">Add Shipping Method</h3>
+                        <form id="shipping-form">
+                            <div class="form-group">
+                                <label data-translate="shipping_method_name">Name</label>
+                                <input type="text" id="shipping-name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-translate="shipping_price">Price</label>
+                                    <input type="number" id="shipping-price" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="estimated_days">Estimated Days</label>
+                                    <input type="number" id="shipping-days" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-translate="save">Save</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Orders Section -->
+                <section id="orders" class="admin-section" style="display: none;">
+                    <h2 data-translate="view_orders">View Orders</h2>
+                    <table id="orders-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="order_id">Order ID</th>
+                                <th data-translate="customer_email">Email</th>
+                                <th data-translate="total">Total</th>
+                                <th data-translate="order_status">Status</th>
+                                <th data-translate="order_date">Date</th>
+                                <th data-translate="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Subscribers Section -->
+                <section id="subscribers" class="admin-section" style="display: none;">
+                    <h2 data-translate="subscribers">Newsletter Subscribers</h2>
+                    <table id="subscribers-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="email">Email</th>
+                                <th data-translate="order_date">Date Subscribed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Complaints Section -->
+                <section id="complaints" class="admin-section" style="display: none;">
+                    <h2 data-translate="complaints">Complaints</h2>
+                    <table id="complaints-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th data-translate="name">Name</th>
+                                <th data-translate="email">Email</th>
+                                <th data-translate="phone">Phone</th>
+                                <th data-translate="order_number">Order #</th>
+                                <th data-translate="subject">Subject</th>
+                                <th data-translate="message">Message</th>
+                                <th>Status</th>
+                                <th data-translate="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 khiones beauty Admin Panel</p>
+        </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

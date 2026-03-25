@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="welcome">KhionesBeauty</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/895afe9ce2.js" crossorigin="anonymous"></script>
+    <script>
+      localStorage.setItem('language', 'en');
+    </script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/"><img src="/images/logo.png" alt="khiones beauty" class="logo-img"></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" data-translate="home">Home</a></li>
+                <li><a href="/products" data-translate="products">Shop</a></li>
+                <li><a href="/wishlist" id="wishlist-btn"><span class="wishlist-icon-wrapper"><i class="fa-solid fa-heart"></i><span id="wishlist-count">0</span></span></a></li>
+                <li><a href="/cart" data-translate="cart"><span class="cart-icon-wrapper"><i class="fas fa-shopping-bag"></i><span id="cart-count">0</span></span></a></li>
+                <li><a href="#" id="account-btn"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                <li>
+                    <div class="language-selector">
+                        <a href="#" class="language-btn"><i class="fa-solid fa-globe"></i> <span id="current-lang">EN</span></a>
+                        <ul class="language-dropdown">
+                            <li><a href="#" onclick="switchLanguage('en')">EN</a></li>
+                            <li><a href="#" onclick="switchLanguage('el')">EL</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-page">
+        <div class="profile-container">
+            <h1 data-translate="my_profile">My Profile</h1>
+            
+            <div class="profile-sections">
+                <!-- Profile Info Section -->
+                <div class="profile-section" id="profile-info-section">
+                    <h2><i class="fa-solid fa-user"></i> Personal Information</h2>
+                    <div class="profile-info">
+                        <div class="info-row">
+                            <label data-translate="nickname">Nickname</label>
+                            <span id="profile-name">Loading...</span>
+                            <button class="btn-edit" onclick="editField('name')"><i class="fa-solid fa-pen"></i></button>
+                        </div>
+                        <div class="info-row">
+                            <label>Email</label>
+                            <span id="profile-email">Loading...</span>
+                        </div>
+                        <div class="info-row">
+                            <label data-translate="member_since">Member Since:</label>
+                            <span id="profile-created">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Profile Form (Hidden by default) -->
+                <div class="profile-section edit-form" id="edit-profile-section" style="display: none;">
+                    <h2><i class="fa-solid fa-pen-to-square"></i> Edit Profile</h2>
+                    <form id="edit-profile-form">
+                        <div class="form-group">
+                            <label data-translate="name">Name</label>
+                            <input type="text" id="edit-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="edit-email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="new_password">New Password (leave blank to keep current)</label>
+                            <input type="password" id="edit-password">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" data-translate="save">Save</button>
+                            <button type="button" class="btn btn-secondary" onclick="cancelEdit()" data-translate="cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order History Section -->
+                <div class="profile-section">
+                    <h2><i class="fa-solid fa-box"></i> <span data-translate="order_history">Order History</span></h2>
+                    <div id="order-history">
+                        <p class="loading-text" data-translate="loading">Loading...</p>
+                    </div>
+                </div>
+
+                <!-- Delivery Information Section -->
+                <div class="profile-section" id="delivery-info-section">
+                    <h2><i class="fa-solid fa-truck"></i> <span data-translate="delivery_info">Delivery Information</span></h2>
+                    <div class="profile-info" id="delivery-info-display">
+                        <div class="info-row">
+                            <label>First Name</label>
+                            <span id="delivery-first-name">Not set</span>
+                            <button class="btn-edit" onclick="editDeliveryInfo()"><i class="fa-solid fa-pen"></i></button>
+                        </div>
+                        <div class="info-row">
+                            <label>Last Name</label>
+                            <span id="delivery-last-name">Not set</span>
+                        </div>
+                        <div class="info-row">
+                            <label data-translate="address">Address</label>
+                            <span id="delivery-address">Not set</span>
+                        </div>
+                        <div class="info-row">
+                            <label data-translate="city">City</label>
+                            <span id="delivery-city">Not set</span>
+                        </div>
+                        <div class="info-row">
+                            <label data-translate="postal_code">Postal Code</label>
+                            <span id="delivery-postal-code">Not set</span>
+                        </div>
+                        <div class="info-row">
+                            <label data-translate="country">Country</label>
+                            <span id="delivery-country">Not set</span>
+                        </div>
+                        <div class="info-row">
+                            <label data-translate="phone">Phone</label>
+                            <span id="delivery-phone">Not set</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Delivery Info Form (Hidden by default) -->
+                <div class="profile-section edit-form" id="edit-delivery-section" style="display: none;">
+                    <h2><i class="fa-solid fa-pen-to-square"></i> <span data-translate="edit_delivery_info">Edit Delivery Information</span></h2>
+                    <form id="edit-delivery-form">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="edit-delivery-first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="edit-delivery-last-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="address">Address</label>
+                            <input type="text" id="edit-delivery-address" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="city">City</label>
+                            <input type="text" id="edit-delivery-city" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="postal_code">Postal Code</label>
+                            <input type="text" id="edit-delivery-postal-code" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="country">Country</label>
+                            <input type="text" id="edit-delivery-country" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="phone">Phone</label>
+                            <input type="tel" id="edit-delivery-phone" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" data-translate="save">Save</button>
+                            <button type="button" class="btn btn-secondary" onclick="cancelDeliveryEdit()" data-translate="cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Wishlist Section -->
+                <div class="profile-section">
+                    <h2><i class="fa-solid fa-heart"></i> <span data-translate="my_wishlist">My Wishlist</span></h2>
+                    <div class="wishlist-preview" id="wishlist-preview">
+                        <p class="loading-text" data-translate="loading">Loading...</p>
+                    </div>
+                    <a href="/wishlist" class="btn btn-outline" data-translate="view_all">View All</a>
+                </div>
+
+                <!-- Account Settings Section -->
+                <div class="profile-section">
+                    <h2><i class="fa-solid fa-cog"></i> <span data-translate="account_settings">Account Settings</span></h2>
+                    <div class="settings-options">
+                        <button class="settings-btn" onclick="toggleNewsletter()">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span data-translate="newsletter">Newsletter</span>
+                            <span class="toggle-status" id="newsletter-status">Off</span>
+                        </button>
+                        <button class="settings-btn" onclick="confirmDeleteAccount()">
+                            <i class="fa-solid fa-trash"></i>
+                            <span data-translate="delete_account">Delete Account</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/images/logo.png" alt="khiones beauty" class="logo-img">
+                </div>
+                <div class="footer-links">
+                    <h3 data-translate="quick_links">Quick Links</h3>
+                    <ul>
+                        <li><a href="/" data-translate="home">Home</a></li>
+                        <li><a href="/products" data-translate="products">Shop</a></li>
+                        <li><a href="/contact" data-translate="contact">Contact</a></li>
+                        <li><a href="/about" data-translate="about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3 data-translate="contact_us">Contact Us</h3>
+                    <p><i class="fa-solid fa-envelope"></i> info@khionesbeauty.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +30 123 456 7890</p>
+                </div>
+                <div class="footer-social">
+                    <h3 data-translate="follow_us">Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Khione's Beauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/hamburger.js"></script>
+    <script src="/js/admin-login.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/profile.js"></script>
+</body>
+</html>
