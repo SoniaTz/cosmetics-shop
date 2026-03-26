@@ -113,7 +113,7 @@ function loadWishlistPreview() {
     }
     
     // Fetch wishlist products
-    fetch('/api/products')
+    fetch('/products.json')
         .then(res => res.json())
         .then(products => {
             const wishlistProducts = products.filter(p => wishlist.includes(p.id)).slice(0, 4);

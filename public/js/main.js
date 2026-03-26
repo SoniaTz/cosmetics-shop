@@ -1,7 +1,23 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const response = await fetch('/api/products');
-    const products = await response.json();
+    // For static GitHub Pages: fetch from JSON file
+    // For Node.js server: fetch from API
+    let products = [];
+    const apiUrl = '/api/products';
+    const jsonUrl = '/products.json';
+    
+    try {
+      const response = await fetch(apiUrl);
+      if (response.ok) {
+        products = await response.json();
+      } else {
+        throw new Error('API not available');
+      }
+    } catch (apiError) {
+      // Fall back to JSON file for static deployment
+      const jsonResponse = await fetch(jsonUrl);
+      products = await jsonResponse.json();
+    }
     
     // Function to get rating for a product
     async function getProductRating(productId) {
@@ -9,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const ratingResponse = await fetch(`/api/reviews/${productId}/average`);
         return await ratingResponse.json();
       } catch (e) {
+        // For static mode: return default rating
         return { average: 0, count: 0 };
       }
     }

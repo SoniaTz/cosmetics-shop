@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0;url=public/index.html">
-    <title>Cosmetics Shop - Redirecting...</title>
+    <title>Cosmetics Shop - Loading...</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,17 +18,30 @@
         .container {
             text-align: center;
         }
-        a {
-            color: white;
-            font-weight: bold;
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🛍️ Cosmetics Shop</h1>
-        <p>Redirecting to shop...</p>
-        <p><a href="public/index.html">Click here if not redirected</a></p>
+        <div class="spinner"></div>
+        <p>Loading shop...</p>
     </div>
+    <script>
+        // Redirect to the public folder
+        window.location.href = './public/index.html';
+    </script>
 </body>
 </html>

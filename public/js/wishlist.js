@@ -45,8 +45,19 @@ async function displayWishlist() {
   }
   
   try {
-    const response = await fetch('/api/products');
-    const allProducts = await response.json();
+    let allProducts = [];
+    try {
+      const response = await fetch('/api/products');
+      if (response.ok) {
+        allProducts = await response.json();
+      } else {
+        throw new Error('API not available');
+      }
+    } catch (e) {
+      // Fall back to JSON file for static deployment
+      const jsonResponse = await fetch('/products.json');
+      allProducts = await jsonResponse.json();
+    }
     
     const wishlistProducts = allProducts.filter(p => wishlist.includes(p.id));
     
@@ -55,11 +66,8 @@ async function displayWishlist() {
       return;
     }
     
-    // Fetch ratings for wishlist products
-    const reviewsPromises = wishlistProducts.map(p => 
-      fetch(`/api/reviews/${p.id}/average`).then(r => r.json())
-    );
-    const reviewsData = await Promise.all(reviewsPromises);
+    // For static mode: use default reviews
+    const reviewsData = wishlistProducts.map(() => ({ average: 0, count: 0 }));
     
     wishlistContent.innerHTML = `
       <div class="wishlist-grid">

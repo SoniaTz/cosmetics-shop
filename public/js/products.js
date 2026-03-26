@@ -44,8 +44,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Load all products
   async function loadProducts() {
     try {
-      const response = await fetch('/api/products');
-      allProducts = await response.json();
+      let products = [];
+      try {
+        const response = await fetch('/api/products');
+        if (response.ok) {
+          products = await response.json();
+        } else {
+          throw new Error('API not available');
+        }
+      } catch (e) {
+        // Fall back to JSON file for static deployment
+        const jsonResponse = await fetch('/products.json');
+        products = await jsonResponse.json();
+      }
+      allProducts = products;
       filteredProducts = [...allProducts];
       
       // Fetch ratings for all products
@@ -64,10 +76,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     for (const product of allProducts) {
       try {
         const response = await fetch(`/api/reviews/${product.id}/average`);
-        const data = await response.json();
-        productRatings[product.id] = data;
+        if (response.ok) {
+          const data = await response.json();
+          productRatings[product.id] = data;
+        } else {
+          throw new Error('API not available');
+        }
       } catch (error) {
-        console.error('Error loading ratings:', error);
+        // For static mode: use default rating
         productRatings[product.id] = { average: 0, count: 0 };
       }
     }

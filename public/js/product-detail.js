@@ -465,8 +465,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Load new arrivals
     async function loadNewArrivals() {
       try {
-        const response = await fetch('/api/products');
-        const products = await response.json();
+        let products = [];
+        try {
+          const response = await fetch('/api/products');
+          if (response.ok) {
+            products = await response.json();
+          } else {
+            throw new Error('API not available');
+          }
+        } catch (e) {
+          // Fall back to JSON file for static deployment
+          const jsonResponse = await fetch('/products.json');
+          products = await jsonResponse.json();
+        }
         const newArrivals = products.filter(p => p.new_arrival === 1).slice(0, 3);
         
         const grid = document.getElementById('new-arrivals-grid');
@@ -477,11 +488,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           return;
         }
         
-        // Fetch reviews for all products
-        const reviewsPromises = newArrivals.map(p => 
-          fetch(`/api/reviews/${p.id}/average`).then(r => r.json())
-        );
-        const reviewsData = await Promise.all(reviewsPromises);
+        // For static mode: use default reviews
+        const reviewsData = newArrivals.map(() => ({ average: 0, count: 0 }));
         
         grid.innerHTML = newArrivals.map((product, index) => {
           const reviews = reviewsData[index];

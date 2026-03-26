@@ -76,8 +76,19 @@ const cart = new Cart();
 
 async function addToCart(productId) {
   try {
-    const response = await fetch('/api/products');
-    const products = await response.json();
+    let products = [];
+    try {
+      const response = await fetch('/api/products');
+      if (response.ok) {
+        products = await response.json();
+      } else {
+        throw new Error('API not available');
+      }
+    } catch (e) {
+      // Fall back to JSON file for static deployment
+      const jsonResponse = await fetch('/products.json');
+      products = await jsonResponse.json();
+    }
     const product = products.find(p => p.id === productId);
     
     if (product) {
