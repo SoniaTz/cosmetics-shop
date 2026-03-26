@@ -40,16 +40,31 @@ npm start
 ✅ .gitignore                - Git ignore rules
 ```
 
-### Pages (7 HTML files)
+### Pages (24 HTML files)
 ```
 ✅ public/index.html            - Home page (featured products)
+✅ public/index-el.html         - Home page Greek
 ✅ public/products.html         - Products list with filters
+✅ public/products-el.html      - Products list Greek
 ✅ public/product.html          - Single product detail
+✅ public/product-el.html       - Product detail Greek
 ✅ public/cart.html             - Shopping cart
-✅ public/checkout.html         - Payment checkout
-✅ public/success.html          - Order confirmation
-✅ public/cancel.html           - Payment cancelled
-✅ public/admin.html            - Admin panel
+✅ public/cart-el.html         - Shopping cart Greek
+✅ public/checkout.html        - Payment checkout
+✅ public/checkout-el.html     - Checkout Greek
+✅ public/success.html         - Order confirmation
+✅ public/success-el.html      - Success Greek
+✅ public/cancel.html         - Payment cancelled
+✅ public/cancel-el.html      - Cancel Greek
+✅ public/wishlist.html       - Wishlist
+✅ public/wishlist-el.html    - Wishlist Greek
+✅ public/profile.html        - User profile
+✅ public/profile-el.html     - Profile Greek
+✅ public/about.html          - About page
+✅ public/about-el.html       - About Greek
+✅ public/contact.html        - Contact page
+✅ public/contact-el.html     - Contact Greek
+✅ public/admin.html          - Admin panel
 ```
 
 ### Styles
@@ -57,7 +72,7 @@ npm start
 ✅ public/css/styles.css        - Complete responsive CSS (1000+ lines)
 ```
 
-### JavaScript (9 files)
+### JavaScript (12 files)
 ```
 ✅ public/js/i18n.js            - Bilingual system
 ✅ public/js/cart.js            - Shopping cart logic
@@ -67,7 +82,11 @@ npm start
 ✅ public/js/shopping-cart.js   - Cart page logic
 ✅ public/js/checkout.js        - Stripe checkout integration
 ✅ public/js/success.js         - Success page logic
+✅ public/js/wishlist.js        - Wishlist functionality
+✅ public/js/profile.js         - User profile management
 ✅ public/js/admin.js           - Admin panel (300+ lines)
+✅ public/js/admin-login.js     - Admin login system
+✅ public/js/hamburger.js       - Mobile menu toggle
 ```
 
 ### Languages (2 files)
@@ -99,9 +118,9 @@ npm start
 
 | Metric | Count |
 |--------|-------|
-| **HTML Pages** | 8 |
+| **HTML Pages** | 24 |
 | **CSS Files** | 1 |
-| **JavaScript Files** | 9 |
+| **JavaScript Files** | 12 |
 | **Languages** | 2 (English + Greek) |
 | **API Endpoints** | 18+ |
 | **Database Tables** | 7 |
@@ -430,6 +449,62 @@ Password: admin123
 
 ---
 
+## 🌐 GITHUB PAGES DEPLOYMENT
+
+### ⚠️ Important Limitations
+- This is a **Node.js/Express** project with backend features
+- GitHub Pages only hosts **static files** (no server-side code)
+- The following features will NOT work on GitHub Pages:
+  - Admin panel (/admin)
+  - Checkout/payment processing
+  - Product database storage
+  - Coupon validation
+  - Newsletter signup
+
+### Option 1: Static Demo (Frontend Only)
+1. Go to your GitHub repository Settings
+2. Set Source to "Deploy from a branch"
+3. Choose `main` branch and `/ (root)` folder
+4. **Important**: GitHub Pages shows README.md by default
+   - Delete or rename README.md, OR
+   - Create an index.html redirect file
+
+### Creating index.html Redirect
+Create `public/index.html` with this content:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0;url=./index.html">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Redirecting to <a href="./index.html">Cosmetics Shop</a>...</p>
+</body>
+</html>
+```
+
+### Option 2: Full Backend Deployment
+Use a service that supports Node.js:
+- **Render** (free) - Recommended
+- **Railway**
+- **Heroku**
+- **Vercel** (with serverless functions)
+
+### Deploy to Render (Free)
+1. Push your code to GitHub
+2. Sign up at [render.com](https://render.com)
+3. Create New → Web Service
+4. Connect your GitHub repo
+5. Set:
+   - Build Command: `npm install`
+   - Start Command: `node server.js`
+6. Click Deploy
+
+**Live URL provided by Render!**
+
+---
+
 ## ⚙️ CONFIGURATION
 
 ### Environment Variables (.env)
@@ -586,10 +661,10 @@ Open: http://localhost:3000
 ## 📝 Summary
 
 - **Status**: ✅ COMPLETE
-- **Files**: 32 created
+- **Files**: 45+ created
 - **Lines of Code**: 5000+
 - **Languages**: 2 (EN + EL)
-- **Pages**: 8
+- **Pages**: 24
 - **API Endpoints**: 18+
 - **Database Tables**: 7
 - **Deployment**: Docker ready
